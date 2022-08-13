@@ -1,25 +1,26 @@
 import java.util.*;
 import java.text.*;
 
-public class CurrencyFormatter {
-    
+public class Solution {
+    /**
+    * @author: Yves Isite
+    */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         double payment = scanner.nextDouble();
         scanner.close();
         
-        NumberFormat nF = NumberFormat.getCurrencyInstance();
-        nF.setCurrency(Currency.getInstance(Locale.US));
+        NumberFormat nF = NumberFormat.getCurrencyInstance(Locale.US);
         String us = nF.format(payment);
         
-        nF.setCurrency(Currency.getInstance(Locale.ENGLISH));
-        String india = nF.format(payment);
+        NumberFormat nF1 = NumberFormat.getCurrencyInstance(new Locale("en", "IN"));
+        String india = nF1.format(payment);
         
-        nF.setCurrency(Currency.getInstance(Locale.CHINA));
-        String china = nF.format(payment);
+        NumberFormat nF2 = NumberFormat.getCurrencyInstance(Locale.CHINA);
+        String china = nF2.format(payment);
         
-        nF.setCurrency(Currency.getInstance(Locale.FRENCH));
-        String france = nF.format(payment);
+        NumberFormat nF3 = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+        String france = nF3.format(payment);
         
         System.out.println("US: " + us);
         System.out.println("India: " + india);
